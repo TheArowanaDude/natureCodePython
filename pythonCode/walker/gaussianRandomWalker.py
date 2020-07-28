@@ -3,8 +3,7 @@ import random
 
 
 class gaussDistribution: 
-    x = 0
-    y = 0 
+
     t = None
     screen = None
 
@@ -17,14 +16,13 @@ class gaussDistribution:
         self.screen.setup(width, height)
         
     def draw(self): 
-        xPosition = self.probabilityGenerate()
-        self.t.setpos(xPosition,200)
-        self.t.circle(30,30)
+        xPosition = self.probabilityGenerate(0, 20)
+        yPosition = self.probabilityGenerate(0,20)
+        self.t.goto(xPosition,yPosition)
 
-    def probabilityGenerate(self): 
-        sd = 60
-        mean = 400
+    def probabilityGenerate(self,mean,sd): 
         num = random.gauss(mean,sd)
+        print(num)
         return num
 
 
