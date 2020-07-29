@@ -22,21 +22,25 @@ class perlinWalker:
 
     def perlinGenerate(self,x): 
         num = self.perlinGenerator(x)
-        print(num)
+        #print(num)
         return num
 
     def drawCircle(self): 
-        t = 0
+        tX = random.randrange(800)
+        tY = random.randrange(800)
+
         while True: 
-            self.t.penup()
             self.t.clear()
-            xPosition = self.perlinGenerate(t)
-            yPosition = self.perlinGenerate(t)
+            xPosition = self.map_range(self.perlinGenerate(tX), 0,1, 0, 800)
+            yPosition = self.map_range(self.perlinGenerate(tY), 0,1, 0, 800)
+            print("xPosition: " + str(xPosition) + " yPosition: " + str(yPosition))
+            #xPosition = 300
+            #yPosition = 400
             self.t.goto(xPosition,yPosition)
-            self.t.pendown()
-            self.t.circle(30)
-            self.t._update()
-            t+=0.01
+            self.t.dot(30)
+            self.screen.update()
+            tX+=0.0001
+            tY+=0.0001
             
 
     
