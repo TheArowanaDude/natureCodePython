@@ -16,25 +16,26 @@ class bouncingBall:
         self.t.ht()
         self.screen.setup(width, height)
         self.screen.tracer(0)
-        self.loc_Vector = np.array([random.randrange(800),random.randrange(800)])
-        self.velocity_Vector = np.array([random.randrange(2),random.randrange(2)])
+        self.t.speed(1)
+        self.screen.setworldcoordinates(0,0,width,height)
+        self.loc_Vector = np.array([random.randrange(width),random.randrange(height)])
+        self.velocity_Vector = np.array([random.randrange(3),random.randrange(3)])
 
     def bounce(self): 
-        if self.loc_Vector[0] > self.screen.screensize()[0]*2 or self.loc_Vector[0] < 0: 
+        if self.loc_Vector[0] > self.screen.screensize()[0] or self.loc_Vector[0] < 0: 
             print("width   " + str(self.screen.screensize()[0]))
             self.velocity_Vector[0] *= -1
 
-        if self.loc_Vector[1] > self.screen.screensize()[1]*2 or self.loc_Vector[1] < 0: 
+        if self.loc_Vector[1] > self.screen.screensize()[1] or self.loc_Vector[1] < 0: 
             print("height   " + str(self.screen.screensize()[0]))
             self.velocity_Vector[1] *= -1     
     
     
     def drawCircle(self): 
         self.t.clear()
-        new_loc = self.loc_Vector+ self.velocity_Vector
-        self.loc_Vector = new_loc
+        self.loc_Vector+=self.velocity_Vector
         self.bounce()
-        #print("xPosition: " + str(self.loc_Vector[0]) + " yPosition" + str(self.loc_Vector[1]))
+        print("xPosition: " + str(self.loc_Vector[0]) + " yPosition" + str(self.loc_Vector[1]))
         self.t.goto(self.loc_Vector[0], self.loc_Vector[1])
         self.t.dot(30)
         self.screen.update()
