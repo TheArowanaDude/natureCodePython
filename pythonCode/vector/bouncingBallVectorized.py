@@ -16,7 +16,7 @@ class bouncingBall:
         self.t.ht()
         self.screen.setup(width, height)
         self.screen.tracer(0)
-        self.t.speed(1)
+        self.t.speed(0)
         self.screen.setworldcoordinates(0,0,width,height)
         self.loc_Vector = np.array([random.randrange(width),random.randrange(height)])
         self.velocity_Vector = np.array([random.randrange(3),random.randrange(3)])
