@@ -18,8 +18,8 @@ class bouncingBall:
         self.screen.tracer(0)
         self.t.speed(0)
         self.screen.setworldcoordinates(0,0,width,height)
-        self.loc_Vector = np.array([random.randrange(width),random.randrange(height)])
-        self.velocity_Vector = np.array([random.randrange(3),random.randrange(3)])
+        self.loc_Vector = np.array([float(random.randrange(width)),float(random.randrange(height))])
+        self.velocity_Vector = np.array([0.55,0.13])
 
     def bounce(self): 
         if self.loc_Vector[0] > self.screen.screensize()[0] or self.loc_Vector[0] < 0: 
@@ -35,7 +35,7 @@ class bouncingBall:
         self.t.clear()
         self.loc_Vector+=self.velocity_Vector
         self.bounce()
-        print("xPosition: " + str(self.loc_Vector[0]) + " yPosition" + str(self.loc_Vector[1]))
+        #print("xPosition: " + str(self.loc_Vector[0]) + " yPosition" + str(self.loc_Vector[1]))
         self.t.goto(self.loc_Vector[0], self.loc_Vector[1])
         self.t.dot(30)
         self.screen.update()
