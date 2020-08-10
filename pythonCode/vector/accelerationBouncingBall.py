@@ -31,10 +31,14 @@ class bouncingBall:
         if self.loc_Vector[0] > self.screen.screensize()[0] or self.loc_Vector[0] < 0: 
             print("width   " + str(self.screen.screensize()[0]))
             self.velocity_Vector[0] *= -1
+            self.accelerationVector[0] *=-1
+            self.tX+=0.00001 * -1
 
         if self.loc_Vector[1] > self.screen.screensize()[1] or self.loc_Vector[1] < 0: 
             print("height   " + str(self.screen.screensize()[0]))
-            self.velocity_Vector[1] *= -1     
+            self.velocity_Vector[1] *= -1   
+            self.accelerationVector[1] *=-1  
+            self.tY+=0.00001 * -1
     
     
     def drawCircle(self): 
@@ -54,8 +58,8 @@ class bouncingBall:
     def animate(self): 
         while True: 
             self.drawCircle()
-            self.tX+=0.0001
-            self.tY+=0.0001
+            self.tX+=0.00001
+            self.tY+=0.00001
             self.accelerationVector = np.array([self.perlinGenerate(self.tX), self.perlinGenerate(self.tY)])
             self.velocity_Vector+=self.accelerationVector
 
