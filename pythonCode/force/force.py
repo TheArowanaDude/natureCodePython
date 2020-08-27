@@ -25,6 +25,10 @@ class Force:
         self.screen.update()
         self.update
 
+    def applyForce(self,forceVector): 
+        self.accelerationVector += forceVector; 
+
+
     def update(self): 
         self.velocityVector += self.accelerationVector
         self.locationVector += self.velocityVector
@@ -38,6 +42,9 @@ class Force:
 
 def main(): 
     force = Force()
+    windVector = np.array([10.0,10.0])
+    force.applyForce(windVector)
+    force.update()
     force.setupBoard()
     force.animate()
 
