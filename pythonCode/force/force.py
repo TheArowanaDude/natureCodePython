@@ -42,11 +42,15 @@ class Force:
 
 def main(): 
     force = Force()
-    windVector = np.array([10.0,10.0])
-    force.applyForce(windVector)
-    force.update()
     force.setupBoard()
-    force.animate()
+
+    while True: 
+        windVector = np.array([0.001,0.001])
+        force.applyForce(windVector)
+        force.drawCircle()
+        force.update()
+    
+    
 
 
 
