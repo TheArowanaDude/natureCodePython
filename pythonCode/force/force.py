@@ -6,6 +6,7 @@ class Force:
     accelerationVector = np.array([0.00,0.00])
     locationVector = np.array([150.00,150.00])
     velocityVector = np.array([0.00,0.00])
+    ballMass = 3000
 
     def setupBoard(self, width = 500, height = 500): 
         self.t = turtle.Turtle()
@@ -36,7 +37,8 @@ class Force:
         #self.update
 
     def applyForce(self,forceVector): 
-        self.accelerationVector += forceVector; 
+        print(forceVector)
+        self.accelerationVector += (forceVector/self.ballMass); 
 
 
     def update(self): 
@@ -56,7 +58,7 @@ def main():
 
     while True: 
         windVector = np.array([0.0001,0.00])
-        gravityVector = np.array([0.000,-0.0009])
+        gravityVector = np.array([0.000,-0.09])
         force.applyForce(windVector)
         force.applyForce(gravityVector)
         force.bounce()
